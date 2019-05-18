@@ -1,4 +1,4 @@
-# React 16.2
+# React 16.8
 
 ## Dependencias para el curso
 Para comenzar vamos a descargar las cosas necesarias:
