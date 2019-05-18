@@ -1,32 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  Button, Grid,
-  Row, Col,
-} from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
+import Header from './Header';
 import Profile from './Profile';
-import logo from '../../logo.svg';
+
 import './index.css';
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <Row>
-        <input className="search-input" type="text" />
-        <Button>Buscar</Button>
-      </Row>
-    </header>
-    <Grid className="App-intro">
-      <br />
-      <Row>
-        <Col xs={3}>
-          <Profile />
-        </Col>
-      </Row>
-    </Grid>
-  </div>
-);
+class App extends React.PureComponent {
+  handleSubmit = (value) => {
+    console.log(value);
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Header handleSubmit={this.handleSubmit} />
+        <Grid className="App-intro">
+          <br />
+          <Row>
+            <Col xs={3}>
+              <Profile
+                name="Federico Gonzalez"
+                date={new Date().toDateString()}
+                text="Texto bla"
+                comment="esto es un comentario"
+              />
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));

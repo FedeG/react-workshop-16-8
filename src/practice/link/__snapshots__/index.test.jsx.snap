@@ -6,6 +6,7 @@ exports[`Link changes the class when hovered 1`] = `
   href="http://www.mercadolibre.com"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  role="button"
 >
   Facebook
 </a>
@@ -17,6 +18,7 @@ exports[`Link changes the class when hovered 2`] = `
   href="http://www.mercadolibre.com"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  role="button"
 >
   Facebook
 </a>
@@ -28,6 +30,7 @@ exports[`Link changes the class when hovered 3`] = `
   href="http://www.mercadolibre.com"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  role="button"
 >
   Facebook
 </a>

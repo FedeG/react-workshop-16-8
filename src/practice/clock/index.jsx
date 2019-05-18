@@ -1,16 +1,22 @@
-/* eslint-disable */
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
-function tick() {
-  const element = (
-    <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {new Date().toLocaleTimeString()}.</h2>
-    </div>
-  );
-  ReactDOM.render(element, document.getElementById('root'));
+export default class Clock extends React.PureComponent {
+  static propTypes = {
+    date: PropTypes.instanceOf(Date),
+  }
+
+  static defaultProps = {
+    date: null,
+  }
+
+  render() {
+    const { date } = this.props;
+    return (
+      <Fragment>
+        <h1>Hello, world!</h1>
+        <h2>{`Fecha: ${date.toDateString()}`}</h2>
+      </Fragment>
+    );
+  }
 }
-
-// Llama a ReactDOM.render() cada 1000 milisegundo.
-setInterval(tick, 1000);

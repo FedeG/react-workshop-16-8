@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentDate initial state 1`] = `
+<div
+  className="Comment-date"
+>
+  Sun Mar 05 1995
+</div>
+`;

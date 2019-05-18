@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserInfo initial state 1`] = `
+<div
+  className="UserInfo"
+>
+  <Avatar
+    author={
+      Object {
+        "avatarUrl": "avatarTestUrl",
+        "name": "Test",
+      }
+    }
+    onClickHandler={[MockFunction]}
+  />
+  <div
+    className="UserInfo-name"
+  >
+    Test
+  </div>
+</div>
+`;

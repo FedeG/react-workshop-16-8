@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar initial state 1`] = `
+<div
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <img
+    alt="Test"
+    className="Avatar"
+    src="avatarTestUrl"
+  />
+</div>
+`;
+
+exports[`Avatar onClickHandler should be called when user click on avatar 1`] = `
+<div
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <img
+    alt="Test"
+    className="Avatar"
+    src="avatarTestUrl"
+  />
+</div>
+`;

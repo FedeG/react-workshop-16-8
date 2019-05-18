@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment initial state 1`] = `
+<div
+  className="Comment"
+>
+  <UserInfo
+    author={
+      Object {
+        "avatarUrl": "avatarTestUrl",
+        "name": "Test",
+      }
+    }
+    onClickHandler={[Function]}
+  />
+  <CommentText>
+    <div>
+      <h1>
+        Comentarios:
+      </h1>
+      <Avatar
+        author={
+          Object {
+            "avatarUrl": "avatarTestUrl",
+            "name": "Test",
+          }
+        }
+        onClickHandler={[Function]}
+      />
+      <h4>
+        buenos dias
+      </h4>
+      <h4>
+        buenas tarde
+      </h4>
+      <h4>
+        buenas noches
+      </h4>
+    </div>
+  </CommentText>
+  <CommentDate
+    date={1995-03-05T03:00:00.000Z}
+  />
+</div>
+`;
+
+exports[`Comment when click, date should change 1`] = `
+<div
+  className="Comment"
+>
+  <UserInfo
+    author={
+      Object {
+        "avatarUrl": "avatarTestUrl",
+        "name": "Test",
+      }
+    }
+    onClickHandler={[Function]}
+  />
+  <CommentText>
+    <div>
+      <h1>
+        Comentarios:
+      </h1>
+      <Avatar
+        author={
+          Object {
+            "avatarUrl": "avatarTestUrl",
+            "name": "Test",
+          }
+        }
+        onClickHandler={[Function]}
+      />
+      <h4>
+        buenos dias
+      </h4>
+      <h4>
+        buenas tarde
+      </h4>
+      <h4>
+        buenas noches
+      </h4>
+    </div>
+  </CommentText>
+  <CommentDate
+    date={1995-03-05T03:00:00.000Z}
+  />
+</div>
+`;
+
+exports[`Comment when click, date should change 2`] = `
+<div
+  className="Comment"
+>
+  <UserInfo
+    author={
+      Object {
+        "avatarUrl": "avatarTestUrl",
+        "name": "Test",
+      }
+    }
+    onClickHandler={[Function]}
+  />
+  <CommentText>
+    <div>
+      <h1>
+        Comentarios:
+      </h1>
+      <Avatar
+        author={
+          Object {
+            "avatarUrl": "avatarTestUrl",
+            "name": "Test",
+          }
+        }
+        onClickHandler={[Function]}
+      />
+      <h4>
+        buenos dias
+      </h4>
+      <h4>
+        buenas tarde
+      </h4>
+      <h4>
+        buenas noches
+      </h4>
+    </div>
+  </CommentText>
+  <CommentDate
+    date={1995-03-05T03:00:00.000Z}
+  />
+  <Clock
+    date={1996-03-05T03:00:00.000Z}
+  />
+</div>
+`;
+
+exports[`Comment when click, date should change 3`] = `
+<div
+  className="Comment"
+>
+  <UserInfo
+    author={
+      Object {
+        "avatarUrl": "avatarTestUrl",
+        "name": "Test",
+      }
+    }
+    onClickHandler={[Function]}
+  />
+  <CommentText>
+    <div>
+      <h1>
+        Comentarios:
+      </h1>
+      <Avatar
+        author={
+          Object {
+            "avatarUrl": "avatarTestUrl",
+            "name": "Test",
+          }
+        }
+        onClickHandler={[Function]}
+      />
+      <h4>
+        buenos dias
+      </h4>
+      <h4>
+        buenas tarde
+      </h4>
+      <h4>
+        buenas noches
+      </h4>
+    </div>
+  </CommentText>
+  <CommentDate
+    date={1995-03-05T03:00:00.000Z}
+  />
+  <Clock
+    date={1997-03-05T03:00:00.000Z}
+  />
+</div>
+`;
+
+exports[`Comment when click, showDate should be true 1`] = `
+<div
+  className="Comment"
+>
+  <UserInfo
+    author={
+      Object {
+        "avatarUrl": "avatarTestUrl",
+        "name": "Test",
+      }
+    }
+    onClickHandler={[Function]}
+  />
+  <CommentText>
+    <div>
+      <h1>
+        Comentarios:
+      </h1>
+      <Avatar
+        author={
+          Object {
+            "avatarUrl": "avatarTestUrl",
+            "name": "Test",
+          }
+        }
+        onClickHandler={[Function]}
+      />
+      <h4>
+        buenos dias
+      </h4>
+      <h4>
+        buenas tarde
+      </h4>
+      <h4>
+        buenas noches
+      </h4>
+    </div>
+  </CommentText>
+  <CommentDate
+    date={1995-03-05T03:00:00.000Z}
+  />
+  <div>
+    Loading...
+  </div>
+</div>
+`;

@@ -31,6 +31,7 @@ export default class Link extends React.Component {
       <a
         className={className}
         href={href || '#'}
+        role="button"
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >
