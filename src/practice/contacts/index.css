@@ -5,13 +5,18 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  margin-bottom: 10px;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
+}
+
+.search-input {
+  margin-right: 5px;
+  color: #000;
 }
 
 .App-title {
