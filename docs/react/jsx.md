@@ -75,5 +75,5 @@ Todo se convierte en una cadena antes de ser renderizado.
 Esto ayuda a prevenir ataques XSS (cross-site-scripting).
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/introducing-jsx.html
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/jsx-in-depth.html
+- https://reactjs.org/docs/introducing-jsx.html
+- https://reactjs.org/docs/jsx-in-depth.html

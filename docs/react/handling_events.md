@@ -49,7 +49,7 @@ function ActionLink() {
 ```
 
 En el ejemplo, `e` es un *SyntheticEvent*.
-React define estos *SyntheticEvents* de acuerdo con la especificación W3C, por lo que no tenemos que preocuparnos por la compatibilidad entre navegadores. Mas información sobre [SyntheticEvent](https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/events.html)
+React define estos *SyntheticEvents* de acuerdo con la especificación W3C, por lo que no tenemos que preocuparnos por la compatibilidad entre navegadores. Mas información sobre [SyntheticEvent](https://reactjs.org/docs/events.html)
 
 ### Detalles de manejo de eventos
 Cuando utilizamos componentes definidos con clases ES6, un patrón común es que un controlador de eventos sea un método en la clase.
@@ -135,4 +135,4 @@ Las dos líneas anteriores son equivalentes.
 En ambos casos, el argumento `e` representa el evento React y se pasará como un segundo argumento después del `id`.
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/handling-events.html
+- https://reactjs.org/docs/handling-events.html

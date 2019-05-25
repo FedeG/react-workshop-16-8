@@ -10,7 +10,7 @@ Mientras que un componente transforma `props` en UI, un componente de orden supe
 Los HOC son comunes en las bibliotecas de React de terceros, como Redux's `connect` y Relay's `createFragmentContainer`.
 
 ## Usar HOC para Cross-Cutting Concerns
-Nota: anteriormente React recomendaba usar mixins para estos casos pero con el tiempo quedo verificado que usar mixins generaba mas problemas que soluciones. Si queres las notas oficiales del react sobre el tema: [Mas información](https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/blog/2016/07/13/mixins-considered-harmful.html)
+Nota: anteriormente React recomendaba usar mixins para estos casos pero con el tiempo quedo verificado que usar mixins generaba mas problemas que soluciones. Si queres las notas oficiales del react sobre el tema: [Mas información](https://reactjs.org/blog/2016/07/13/mixins-considered-harmful.html)
 
 Los componentes de React buscan ser reutilizables y hacer que la logica sea independiente en cada componente, pero hay casos donde esa estructura genera repeticiones de código entre componentes.
 
@@ -83,7 +83,7 @@ class BlogPost extends React.Component {
 }
 ```
 A simple vista vemos como estas dos componentes tiene una logica muy similar.
-En estos casos, usualmente usariamos herencia pero en este modelo vamos a usar composición para que el código sea mas ordenado y podamos trabajar evitando futuros problemas. Si queres detalles de porque se usa composición en lugar de herencia, en la documentación oficial tenes un apartado sobre el tema: [composition vs inheritance](https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/composition-vs-inheritance.html)
+En estos casos, usualmente usariamos herencia pero en este modelo vamos a usar composición para que el código sea mas ordenado y podamos trabajar evitando futuros problemas. Si queres detalles de porque se usa composición en lugar de herencia, en la documentación oficial tenes un apartado sobre el tema: [composition vs inheritance](https://reactjs.org/docs/composition-vs-inheritance.html)
 
 Para aislar esa logica vamos a usar una HOC:
 ```javascript
@@ -267,4 +267,4 @@ El uso de `refs` en este caso hace que la referencia siempre quede en el compone
 La solución a esto es evitar el uso de `ref`, solo en casos muy específicos se puede modificar el ref pero para esto hay que desde el HOC conocer que se utiliza un `ref` hacia el.
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/higher-order-components.html
+- https://reactjs.org/docs/higher-order-components.html

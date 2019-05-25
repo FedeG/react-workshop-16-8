@@ -61,4 +61,4 @@ const MyComponent = () => (
 React Loadable lo ayuda a crear estados de carga, estados de error, tiempos de espera, precarga y más. Incluso puede ayudarlo a renderizar una aplicación en el servidor con gran cantidad de código dividido.
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/code-splitting.html
+- https://reactjs.org/docs/code-splitting.html

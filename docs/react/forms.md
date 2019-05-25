@@ -154,4 +154,4 @@ handleInputChange(event) {
 ```
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/forms.html
+- https://reactjs.org/docs/forms.html

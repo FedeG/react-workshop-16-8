@@ -82,4 +82,4 @@ Link con documentación sobre cada método: [react indepth life cycle](https://d
 ### Practica: *practice/clock*
 
 ### Documentación oficial:
-  - https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/state-and-lifecycle.html
+  - https://reactjs.org/docs/state-and-lifecycle.html

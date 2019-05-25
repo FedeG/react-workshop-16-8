@@ -39,4 +39,4 @@ Algunas herramientas todavía no lo admiten, por ende es recomendable usar `<Rea
 Nota: Si usamos la versión no abreviada se puede usar `key` pero no `props`.
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/fragments.html
+- https://reactjs.org/docs/fragments.html
