@@ -21,8 +21,13 @@
 </body>
 <script>
   window.$docsify = {
-    loadSidebar: false,
+    loadSidebar: true,
     coverpage: true,
+    pagination: {
+      previousText: 'Paso previo',
+      nextText: 'Paso siguiente',
+      crossChapter: true
+    },
     plugins: [
       function (hook, vm) {
         hook.afterEach(function(html, next) {
@@ -55,4 +60,5 @@
   <script src="//unpkg.com/prismjs/components/prism-diff.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-django.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-docker.min.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </html>
