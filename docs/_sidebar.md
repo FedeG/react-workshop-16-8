@@ -16,4 +16,5 @@
 - [Contexto](react/context.md)
 - [Fragmentos](react/fragments.md)
 - [Componentes de orden superior](react/higher_order_components.md)
+- [Render Props](react/render-props.md)
 - [División de código](react/code_splitting.md)
