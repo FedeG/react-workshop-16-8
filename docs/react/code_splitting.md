@@ -33,7 +33,67 @@ Cuando Webpack encuentra esta sintaxis, inicia automáticamente la división de 
 Si está utilizando la aplicación Create React, esto ya está configurado para usted y puede comenzar a usarlo inmediatamente.
 También se admite de forma predeterminada en Next.js.
 
-## Ejemplo: React Loadable
+## React.lazy
+React ofrece `React.lazy`, que nos permite renderizar un `import` dinámico como si fuese un componente regular.
+
+Antes:
+```javascript
+import OtherComponent from './OtherComponent';
+
+function MyComponent() {
+  return (
+    <div>
+      <OtherComponent />
+    </div>
+  );
+}
+```
+
+Con React.lazy:
+```javascript
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <OtherComponent />
+    </div>
+  );
+}
+```
+
+`React.lazy` toma como parámetro una function que debe llamar un `import` dinámico. Esto retorna una `Promise` que debe resolver a un módulo cuyo `default export` sea un componente de React.
+
+## Suspense
+
+Para renderizar algún contenido por defecto mientras se espera a que `React.lazy` retorne el componente importado dinámicamente (como puede ser un spinner), React nos ofrece **Suspense**:
+
+```javascript
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <OtherComponent />
+      </Suspense>
+    </div>
+  );
+}
+```
+
+La prop `fallback` acepta cualquier element React y será el que se renderize durante el proceso de carga.
+
+**Nota:** Se pueden wrappear múltiples componentes dentro de un único Suspense.
+
+---
+**Nota:**
+
+`React.lazy` y Suspense no tienen soporte aún para server-side rendering. Para esto, se puede hacer uso, por ejemplo, de librería como **React Loadable**.
+
+---
+
+## React Loadable
 Esta librería nos permite hacer ese tipo de import dinámico de una forma amigable:
 
 Antes:
@@ -59,6 +119,12 @@ const MyComponent = () => (
 );
 ```
 React Loadable lo ayuda a crear estados de carga, estados de error, tiempos de espera, precarga y más. Incluso puede ayudarlo a renderizar una aplicación en el servidor con gran cantidad de código dividido.
+
+<!---
+TODO: Se debe agregar una sección sobre handle de errores en lazy load con Error Boundaries.
+      Dado que al momento de realizar esta sección no se cuenta con una sección sobre
+      Error Boundaries en el curso, se decidió no agregar el apartado aquí por el momento.
+-->
 
 ### Documentación oficial:
 - https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/code-splitting.html
