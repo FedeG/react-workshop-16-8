@@ -9,22 +9,16 @@ Concretamente, un componente de orden superior es una función que toma un compo
 Mientras que un componente transforma `props` en UI, un componente de orden superior transforma un componente en otro componente.
 Los HOC son comunes en las bibliotecas de React de terceros, como Redux's `connect` y Relay's `createFragmentContainer`.
 
-## Usar HOC para Cross-Cutting Concerns
-Nota: anteriormente React recomendaba usar mixins para estos casos pero con el tiempo quedo verificado que usar mixins generaba mas problemas que soluciones. Si queres las notas oficiales del react sobre el tema: [Mas información](https://reactjs.org/blog/2016/07/13/mixins-considered-harmful.html)
-
+## HOC para reutilización de código
 Los componentes de React buscan ser reutilizables y hacer que la logica sea independiente en cada componente, pero hay casos donde esa estructura genera repeticiones de código entre componentes.
 
 Por ejemplo podemos tener dos componentes que lean información desde la misma fuente de datos:
 ```javascript
 class CommentList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      // "DataSource" is some global data source
-      comments: DataSource.getComments()
-    };
-  }
+  state = {
+    // "DataSource" is some global data source
+    comments: DataSource.getComments()
+  };
 
   componentDidMount() {
     // Subscribe to changes
@@ -36,12 +30,10 @@ class CommentList extends React.Component {
     DataSource.removeChangeListener(this.handleChange);
   }
 
-  handleChange() {
-    // Update component state whenever the data source changes
-    this.setState({
-      comments: DataSource.getComments()
-    });
-  }
+  // Update component state whenever the data source changes
+  handleChange = () => this.setState({
+    comments: DataSource.getComments()
+  });
 
   render() {
     return (
@@ -55,13 +47,9 @@ class CommentList extends React.Component {
 }
 
 class BlogPost extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      blogPost: DataSource.getBlogPost(props.id)
-    };
-  }
+  state = {
+    blogPost: DataSource.getBlogPost(props.id)
+  };
 
   componentDidMount() {
     DataSource.addChangeListener(this.handleChange);
@@ -71,11 +59,9 @@ class BlogPost extends React.Component {
     DataSource.removeChangeListener(this.handleChange);
   }
 
-  handleChange() {
-    this.setState({
-      blogPost: DataSource.getBlogPost(this.props.id)
-    });
-  }
+  handleChange = () => this.setState({
+    blogPost: DataSource.getBlogPost(this.props.id)
+  });
 
   render() {
     return <TextBlock text={this.state.blogPost} />;
@@ -91,13 +77,9 @@ Para aislar esa logica vamos a usar una HOC:
 function withSubscription(WrappedComponent, selectData) {
   // ...and returns another component...
   return class extends React.Component {
-    constructor(props) {
-      super(props);
-      this.handleChange = this.handleChange.bind(this);
-      this.state = {
-        data: selectData(DataSource, props)
-      };
-    }
+    state = {
+      data: selectData(DataSource, props)
+    };
 
     componentDidMount() {
       // ... that takes care of the subscription...
@@ -108,11 +90,9 @@ function withSubscription(WrappedComponent, selectData) {
       DataSource.removeChangeListener(this.handleChange);
     }
 
-    handleChange() {
-      this.setState({
-        data: selectData(DataSource, this.props)
-      });
-    }
+    handleChange = () => this.setState({
+      data: selectData(DataSource, this.props)
+    });
 
     render() {
       // ... and renders the wrapped component with the fresh data!
@@ -133,55 +113,37 @@ const BlogPostWithSubscription = withSubscription(
 );
 ```
 Un HOC no modifica el componente de entrada, ni utiliza la herencia para copiar su comportamiento.
-Un HOC compone el componente original envolviéndolo en un componente contenedor y siempre un HOC es una función pura con cero efectos secundarios.
+Un HOC compone el componente original envolviéndolo en un componente contenedor y siempre un HOC es una función pura sin efectos secundarios.
 
-## No lo uses para modificar el componente original. Usa la composición
-Si bien hablamos que los HOC son composición y no tiene efecto de lado, esto depende de como lo implementemos.
-Es importante respetar la premisa de la compocion.
-Por ejemplo, si no respetamos eso podemos llegar a modificar el comportamiento del componente:
+---
+**Nota:**
 
-```javascript
-function logProps(InputComponent) {
-  InputComponent.prototype.componentWillReceiveProps = function(nextProps) {
-    console.log('Current props: ', this.props);
-    console.log('Next props: ', nextProps);
-  };
-  // The fact that we're returning the original input is a hint that it has
-  // been mutated.
-  return InputComponent;
-}
+Es importante notar la separación de responsabilidades que se tiene usando HoC; El HoC desconoce el porqué y el cómo las props que pasa al componente wrappeado son usadas y el componente wrappeado desconoce cómo estas props fueron generadas.
 
-// EnhancedComponent will log whenever props are received
-const EnhancedComponent = logProps(InputComponent);
-```
-
-En este caso modificamos el componente, esto trae muchos problemas:
-- El HOC elimina el `componentWillReceiveProps` original
-- Si ese HOC se usa junto con otro igual, uno va a cancelar el método del otro
-- La componente no se va a poder reutilizar sin este HOC
-- Para usar este HOC si o si tendriamos que ver su código y tenerlo en cuenta con sumo detalle
-
-Si se quiere hacer eso pero de forma correcta se puede hacer con composición:
-```javascript
-function logProps(WrappedComponent) {
-  return class extends React.Component {
-    componentWillReceiveProps(nextProps) {
-      console.log('Current props: ', this.props);
-      console.log('Next props: ', nextProps);
-    }
-    render() {
-      // Wraps the input component in a container, without mutating it. Good!
-      return <WrappedComponent {...this.props} />;
-    }
-  }
-}
-```
+---
 
 ## Convenciones
 
-### Evitar cambiar la firma de un componente
-Con convension un HOC no tiene que alterar mucho los `props` que requiere un componente.
-Siempre los `props` tenemos que mandarlos a la componente que estamos trabajando y a lo sumo agregarle mas `props` en el HOC.
+### Evitar pasar props específicas del HoC al componente wrappeado
+Es siempre recomendable filtrar las props que corresponden al HoC y evitar pasarlas al componente wrappeado.
+
+```javascript
+render() {
+  // Filter out extra props that are specific to this HOC and shouldn't be passed through
+  const { extraProp, ...passThroughProps } = this.props;
+
+  // Inject props into the wrapped component. These are usually state values or instance methods.
+  const injectedProp = someStateOrInstanceMethod;
+
+  // Pass props to wrapped component
+  return (
+    <WrappedComponent
+      injectedProp={injectedProp}
+      {...passThroughProps}
+    />
+  );
+}
+```
 
 ### Mejorar la composision
 No todos los HOC tienen el mismo aspecto. Algunas veces aceptan solo un único argumento, el componente envuelto: `const NavbarWithRouter = withRouter(Navbar)`
@@ -218,7 +180,7 @@ function getDisplayName(WrappedComponent) {
 Los componentes de orden superior vienen con algunas advertencias que no son inmediatamente obvias si eres nuevo en React.
 
 ### No uses el HOC dentro del método render
-Nunca hagas esto:
+Debido al algoritmo que React utiliza para actualizar los componentes (**reconciliation**), crear un HoC dentro del método `render` de un componente implica montar y desmontar este componente cada vez que el método render se ejecuta:
 ```javascript
 render() {
   // A new versión of EnhancedComponent is created on every render
@@ -229,42 +191,12 @@ render() {
 }
 ```
 
-### Los métodos estáticos hay que copiarlos
-Cuando usamos HOC los métodos static que esten en el componente original no van a estar en el componente final, por ende, tenemos que copiarlos.
+### Los métodos estáticos deben ser copiados
+Cuando usamos HOC los métodos o atributos estáticos que esten en el componente original no "pasan" al componente final, por ende, tenemos que copiarlos. Podemos copiarlos manualmente o haciendo uso de `hoistNonReactStatic` del paquete `hoist-non-react-statics`.
 
-```javascript
-// Creamos un método static
-WrappedComponent.staticMethod = function() {/*...*/}
-// Usamos un HOC
-const EnhancedComponent = enhance(WrappedComponent);
-
-// El método no va a existir en la componente final
-typeof EnhancedComponent.staticMethod === 'undefined' // true
-
-// Una solución a esto es copiar el método manualmente
-
-function enhance(WrappedComponent) {
-  class Enhance extends React.Component {/*...*/}
-  // Must know exactly which method(s) to copy :(
-  Enhance.staticMethod = WrappedComponent.staticMethod;
-  return Enhance;
-}
-
-// Pero para copiar manualmente tenemos que conocer todos los métodos static que tiene la componente original
-// Para evitar tener que conocerlos, podemos usar un modulo que copia todos los métodos static automáticamente: hoist-non-react-statics
-
-import hoistNonReactStatic from 'hoist-non-react-statics';
-
-function enhance(WrappedComponent) {
-  class Enhance extends React.Component {/*...*/}
-  hoistNonReactStatic(Enhance, WrappedComponent);
-  return Enhance;
-}
-```
-
-### Los refs no funcionan igual
-El uso de `refs` en este caso hace que la referencia siempre quede en el componente de mas afuera es decir en el HOC mas exterior.
-La solución a esto es evitar el uso de `ref`, solo en casos muy específicos se puede modificar el ref pero para esto hay que desde el HOC conocer que se utiliza un `ref` hacia el.
+### Los refs no funcionan
+El uso de `refs` en este caso hace que la referencia quede en el componente "exterior" es decir, en el HOC.
+Para estos casos, pueden utilizarse la API `React.forwardRef`.
 
 ### Documentación oficial:
 - https://reactjs.org/docs/higher-order-components.html
