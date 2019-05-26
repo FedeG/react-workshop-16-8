@@ -33,6 +33,9 @@ Cuando Webpack encuentra esta sintaxis, inicia automáticamente la división de 
 Si está utilizando la aplicación Create React, esto ya está configurado para usted y puede comenzar a usarlo inmediatamente.
 También se admite de forma predeterminada en Next.js.
 
+### Nombrar el archivo autogenerado
+Se puede nombrar el archivo autogenerado agregando un comentario al import: `import(/* webpackChunkName: "name" */'<path>')`.
+
 ## React.lazy
 React ofrece `React.lazy`, que nos permite renderizar un `import` dinámico como si fuese un componente regular.
 
@@ -51,7 +54,7 @@ function MyComponent() {
 
 Con React.lazy:
 ```javascript
-const OtherComponent = React.lazy(() => import('./OtherComponent'));
+const OtherComponent = React.lazy(() => import(/* webpackChunkName: "OtherComponent" */'./OtherComponent'));
 
 function MyComponent() {
   return (
@@ -69,7 +72,7 @@ function MyComponent() {
 Para renderizar algún contenido por defecto mientras se espera a que `React.lazy` retorne el componente importado dinámicamente (como puede ser un spinner), React nos ofrece **Suspense**:
 
 ```javascript
-const OtherComponent = React.lazy(() => import('./OtherComponent'));
+const OtherComponent = React.lazy(() => import(/* webpackChunkName: "OtherComponent" */'./OtherComponent'));
 
 function MyComponent() {
   return (
@@ -110,7 +113,7 @@ Con React Loadable:
 import Loadable from 'react-loadable';
 
 const LoadableOtherComponent = Loadable({
-  loader: () => import('./OtherComponent'),
+  loader: () => import(/* webpackChunkName: "OtherComponent" */'./OtherComponent'),
   loading: () => <div>Loading...</div>,
 });
 
