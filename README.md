@@ -29,5 +29,6 @@ Para comenzar vamos a descargar las cosas necesarias:
 - [Contexto](https://fedeg.github.io/react-workshop-16-8/#/react/context.md)
 - [Fragmentos](https://fedeg.github.io/react-workshop-16-8/#/react/fragments.md)
 - [Componentes de orden superior](https://fedeg.github.io/react-workshop-16-8/#/react/higher_order_components.md)
+- [Render Props](https://fedeg.github.io/react-workshop-16-8/#/react/render-props.md)
 - [División de código](https://fedeg.github.io/react-workshop-16-8/#/react/code_splitting.md)
 - [Hooks](https://fedeg.github.io/react-workshop-16-8/#/react/hooks.md)
