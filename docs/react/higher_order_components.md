@@ -15,14 +15,10 @@ Los componentes de React buscan ser reutilizables y hacer que la logica sea inde
 Por ejemplo podemos tener dos componentes que lean información desde la misma fuente de datos:
 ```javascript
 class CommentList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      // "DataSource" is some global data source
-      comments: DataSource.getComments()
-    };
-  }
+  state = {
+    // "DataSource" is some global data source
+    comments: DataSource.getComments()
+  };
 
   componentDidMount() {
     // Subscribe to changes
@@ -34,12 +30,10 @@ class CommentList extends React.Component {
     DataSource.removeChangeListener(this.handleChange);
   }
 
-  handleChange() {
-    // Update component state whenever the data source changes
-    this.setState({
-      comments: DataSource.getComments()
-    });
-  }
+  // Update component state whenever the data source changes
+  handleChange = () => this.setState({
+    comments: DataSource.getComments()
+  });
 
   render() {
     return (
@@ -53,13 +47,9 @@ class CommentList extends React.Component {
 }
 
 class BlogPost extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      blogPost: DataSource.getBlogPost(props.id)
-    };
-  }
+  state = {
+    blogPost: DataSource.getBlogPost(props.id)
+  };
 
   componentDidMount() {
     DataSource.addChangeListener(this.handleChange);
@@ -69,11 +59,9 @@ class BlogPost extends React.Component {
     DataSource.removeChangeListener(this.handleChange);
   }
 
-  handleChange() {
-    this.setState({
-      blogPost: DataSource.getBlogPost(this.props.id)
-    });
-  }
+  handleChange = () => this.setState({
+    blogPost: DataSource.getBlogPost(this.props.id)
+  });
 
   render() {
     return <TextBlock text={this.state.blogPost} />;
@@ -89,13 +77,9 @@ Para aislar esa logica vamos a usar una HOC:
 function withSubscription(WrappedComponent, selectData) {
   // ...and returns another component...
   return class extends React.Component {
-    constructor(props) {
-      super(props);
-      this.handleChange = this.handleChange.bind(this);
-      this.state = {
-        data: selectData(DataSource, props)
-      };
-    }
+    state = {
+      data: selectData(DataSource, props)
+    };
 
     componentDidMount() {
       // ... that takes care of the subscription...
@@ -106,11 +90,9 @@ function withSubscription(WrappedComponent, selectData) {
       DataSource.removeChangeListener(this.handleChange);
     }
 
-    handleChange() {
-      this.setState({
-        data: selectData(DataSource, this.props)
-      });
-    }
+    handleChange = () => this.setState({
+      data: selectData(DataSource, this.props)
+    });
 
     render() {
       // ... and renders the wrapped component with the fresh data!
