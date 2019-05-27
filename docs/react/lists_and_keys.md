@@ -79,4 +79,4 @@ ReactDOM.render(
 ```
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/lists-and-keys.html
+- https://reactjs.org/docs/lists-and-keys.html

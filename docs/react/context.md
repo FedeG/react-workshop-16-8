@@ -112,7 +112,7 @@ Si el componente tiene `contextTypes` definido a varios métodos del ciclo de vi
 ## Actualizando el contexto
 No lo hagas
 React tiene una API para actualizar el contexto, pero está fundamentalmente rota y no deberías usarla.
-Mas información sobre esto: [updating context](https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/context.html#updating-context)
+Mas información sobre esto: [updating context](https://reactjs.org/docs/context.html#updating-context)
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/context.html
+- https://reactjs.org/docs/context.html

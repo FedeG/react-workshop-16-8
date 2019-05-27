@@ -51,7 +51,7 @@ Esto se puede ver con una extensión en el navegador: [react devtools](https://g
 
 En nuestro ejemplo anterior:
 
-![clock](https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/granular-dom-updates-c158617ed7cc0eac8f58330e49e48224.gif)
+![clock](https://reactjs.org/granular-dom-updates-c158617ed7cc0eac8f58330e49e48224.gif)
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/rendering-elements.html
+- https://reactjs.org/docs/rendering-elements.html

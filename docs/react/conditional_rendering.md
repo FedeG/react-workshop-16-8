@@ -125,4 +125,4 @@ ReactDOM.render(
 Nota: El retorno de `null` en el `render` de un componente no afecta la activación de los métodos del ciclo de vida del componente. Por ejemplo, se seguirán llamando `componentWillUpdate` y `componentDidUpdate`.
 
 ### Documentación oficial:
-- https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/docs/conditional-rendering.html
+- https://reactjs.org/docs/conditional-rendering.html

@@ -2,7 +2,7 @@
   React 16.8
 </span>
 
-> Mercado libre 2018
+> Facttic 2019
 
 - Crear proyecto de React
 - Entender las herramientas requeridas para trabajar con React

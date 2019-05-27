@@ -42,7 +42,7 @@ Esto significa que se puede interpretar los componentes de React y renderizarlos
 Esto mejora el rendimiento de la carga inicial ya que el usuario no necesita esperar a que el JS sea descargado para ver la interfaz inicial, y React puede reutilizar el HTML renderizado en el servidor así que no necesita generarlo en el lado del cliente.
 
 ## Links relacionados
-- Documentación oficial de react: [versión 16.8](https://5abc31d8be40f1556f06c4be--reactjs.netlify.com/)
+- Documentación oficial de react: [versión 16.8 español](https://es.reactjs.org/) [versión 16.8 ingles](https://es.reactjs.org/)
 - Documentos, videos, talleres y mas cosas relacionadas con react: [awesome-react](https://github.com/enaqx/awesome-react)
 - Documentos, videos, talleres y mas cosas relacionadas con react en espanol: [react espanol](https://github.com/jlobos/react-espanol)
 - Componentes para reutilizar: [awesome-react-components](https://github.com/brillout/awesome-react-components)

@@ -12,17 +12,22 @@
 <body>
   <nav>
     <ul>
-      <li><a href="https://fedeg.github.io/react-workshop/#/react/README">Guía</a></li>
+      <li><a href="/#/react/README">Guía</a></li>
       <li><a href="#/"><img class="emoji" src="https://assets-cdn.github.com/images/icons/emoji/es.png" alt="es"> Español</a></li>
-      <li><a href="https://fedeg.github.io/react-workshop/#/contact">Contactos</a></li>
+      <li><a href="/#/contact">Contactos</a></li>
     </ul>
   </nav>
   <div id="app"></div>
 </body>
 <script>
   window.$docsify = {
-    loadSidebar: false,
+    loadSidebar: true,
     coverpage: true,
+    pagination: {
+      previousText: 'Paso previo',
+      nextText: 'Paso siguiente',
+      crossChapter: true
+    },
     plugins: [
       function (hook, vm) {
         hook.afterEach(function(html, next) {
@@ -55,4 +60,6 @@
   <script src="//unpkg.com/prismjs/components/prism-diff.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-django.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-docker.min.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
 </html>
