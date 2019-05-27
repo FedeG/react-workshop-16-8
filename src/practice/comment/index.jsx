@@ -6,18 +6,42 @@ function formatDate(date){
   return date.toDateString();
 }
 
+class Avatar extends React.Component {
+  render() {
+    return (
+      <img className="Avatar"
+        src={this.props.author.avatarUrl}
+        alt={this.props.author.name}
+      />
+    );
+  }
+}
+
+class UserName extends React.Component {
+  render() {
+    return (
+      <div className="UserInfo-name">
+        {this.props.name}
+      </div>
+    )
+  }
+}
+
+class UserInfo extends React.Component {
+  render() {
+    return (
+      <div className="UserInfo">
+        <Avatar author={author} />
+        <UserName name={author.name} />
+      </div>
+    );
+  }
+}
+
 function Comment(props) {
   return (
     <div className="Comment">
-      <div className="UserInfo">
-        <img className="Avatar"
-          src={props.author.avatarUrl}
-          alt={props.author.name}
-        />
-        <div className="UserInfo-name">
-          {props.author.name}
-        </div>
-      </div>
+      <UserInfo author={props.author} />
       <div className="Comment-text">
         {props.text}
       </div>
