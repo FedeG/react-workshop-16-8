@@ -28,6 +28,7 @@ Para comenzar vamos a descargar las cosas necesarias:
 - [Formularios](https://fedeg.github.io/react-workshop-16-8/#/react/forms.md)
 - [Contexto](https://fedeg.github.io/react-workshop-16-8/#/react/context.md)
 - [Fragmentos](https://fedeg.github.io/react-workshop-16-8/#/react/fragments.md)
+- [Refs](https://fedeg.github.io/react-workshop-16-8/#/react/refs.md)
 - [Error Boundaries](https://fedeg.github.io/react-workshop-16-8/#/react/error_boundaries.md)
 - [Componentes de orden superior](https://fedeg.github.io/react-workshop-16-8/#/react/higher_order_components.md)
 - [Render Props](https://fedeg.github.io/react-workshop-16-8/#/react/render-props.md)
