@@ -26,7 +26,6 @@ Para comenzar vamos a descargar las cosas necesarias:
 - [Listas y claves](react/lists_and_keys.md)
 - [Testing](https://jestjs.io/docs/es-ES/tutorial-react)
 - [Formularios](react/forms.md)
-- [Contexto](react/context.md)
 - [Fragmentos](react/fragments.md)
 - [Refs](react/refs.md)
 - [Error Boundaries](react/error_boundaries.md)
