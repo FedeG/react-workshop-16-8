@@ -26,7 +26,6 @@ Para comenzar vamos a descargar las cosas necesarias:
 - [Listas y claves](https://fedeg.github.io/react-workshop-16-8/#/react/lists_and_keys.md)
 - [Testing](https://fedeg.github.io/react-workshop-16-8/#/https://jestjs.io/docs/es-ES/tutorial-react)
 - [Formularios](https://fedeg.github.io/react-workshop-16-8/#/react/forms.md)
-- [Contexto](https://fedeg.github.io/react-workshop-16-8/#/react/context.md)
 - [Fragmentos](https://fedeg.github.io/react-workshop-16-8/#/react/fragments.md)
 - [Refs](https://fedeg.github.io/react-workshop-16-8/#/react/refs.md)
 - [Error Boundaries](https://fedeg.github.io/react-workshop-16-8/#/react/error_boundaries.md)
