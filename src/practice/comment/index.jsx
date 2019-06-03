@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 function formatDate(date){
   return date.toDateString();
@@ -17,6 +18,14 @@ class Avatar extends React.Component {
   }
 }
 
+Avatar.propTypes = {
+  author: PropTypes.shape({
+    avatarUrl: PropTypes.string,
+    name: PropTypes.string
+  })
+};
+
+
 class UserName extends React.Component {
   render() {
     return (
@@ -26,6 +35,10 @@ class UserName extends React.Component {
     )
   }
 }
+
+UserName.propTypes = {
+  name: PropTypes.string
+};
 
 class UserInfo extends React.Component {
   render() {
@@ -37,6 +50,13 @@ class UserInfo extends React.Component {
     );
   }
 }
+
+UserInfo.propTypes = {
+  author: PropTypes.shape({
+    avatarUrl: PropTypes.string,
+    name: PropTypes.string
+  })
+};
 
 function Comment(props) {
   return (
@@ -52,12 +72,25 @@ function Comment(props) {
   );
 }
 
+Comment.propTypes = {
+  author: PropTypes.shape({
+    avatarUrl: PropTypes.string,
+    name: PropTypes.string
+  }),
+  text: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date)
+};
+
+Comment.defaultProps = {
+  date: new Date()
+}
+
 const author = {
   name: 'Fede',
   avatarUrl: 'https://imagekit.androidphoria.com/wp-content/uploads/clash-royale-pajaro-simpsons.jpg'
 }
 
 ReactDOM.render(<Comment
-  author={author} date={new Date()}
+  author={author}
   text='Esta componente hay que mejorarla'
 /> , document.getElementById('root'));
